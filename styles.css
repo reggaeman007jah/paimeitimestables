@@ -7,3 +7,25 @@
   background-color: green;
   color: white;
 }
+
+.container {
+  color: rgb(198, 198, 199);
+  /* background: url(assets/bg.svg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+  background-color: rgba(60, 60, 66, 1);
+}
+
+#answer-field {
+  color: white
+}
+
+/* html { 
+  background: url(assets/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */

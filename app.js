@@ -1,13 +1,22 @@
 let gotRight = 0;
 let gotWrong = 0;
 let streak = 0;
-let bestStreak = 0; // tbc
+let bestStreak = 0;
 let turns = 0;
+
+// get streak data
+bestStreak = localStorage.getItem('bestStreak')
 
 // decs 
 let para = document.querySelector("p"); //
 let form = document.querySelector(".signup-form"); // form reference by class
 let answer = document.querySelector("#answer-field"); // field refernce by ID
+let showStreak = document.querySelector("#currentStreak"); // field ref for current streak
+let showTurns = document.querySelector("#turnsTaken"); // field ref for current streak
+let showTotalCorrect = document.querySelector("#totalCorrect"); // field ref for current streak
+let showBestStreak = document.querySelector("#bestStreak"); // field ref for best streak
+
+showBestStreak.innerText = bestStreak
 
 console.log("-------------------------------");
 console.log("WELCOME TO PAI MEI TIMES TABLES");
@@ -20,7 +29,7 @@ PMTT()
 function checkQuestion(questionID) {
   // check to see if q has already been answered
   let qID = localStorage.getItem(questionID)
-  console.log("success")
+
   console.log(questionID)
   console.log(qID)
   if (!qID) {
@@ -79,6 +88,17 @@ function PMTT() {
       turns += 1 // count turns
     }
 
+    if (streak > bestStreak) {
+      let copyVar = streak
+      bestStreak = copyVar
+
+    }
+    localStorage.setItem('bestStreak', bestStreak)
+
+    showStreak.innerText = streak
+    showTurns.innerText = turns
+    showTotalCorrect.innerText = gotRight
+    showBestStreak.innerText = bestStreak
 
 
     form.removeEventListener("submit", testFNC)
