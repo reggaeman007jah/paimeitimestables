@@ -78,7 +78,7 @@ function PMTT() {
       form.removeEventListener("submit", testFNC)
       PMTT();
     } else {
-
+      feedback.textContent = ""
       form.reset(); // reset form field
       console.log("answer entered is: " + parsedAnswer); // console feedback
       console.log("answer we were looking for is: " + theAnswer); // console feedback
