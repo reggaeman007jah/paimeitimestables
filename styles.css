@@ -8,6 +8,16 @@
   color: white;
 }
 
+.bigSuccess {
+  background-color: rgb(34, 241, 34);
+  color: white;
+}
+
+.done {
+  background-color: rgb(26, 26, 30);
+  color: rgb(107, 106, 110);
+}
+
 .container {
   color: rgb(198, 198, 199);
   /* background: url(assets/bg.svg) no-repeat center center fixed; 

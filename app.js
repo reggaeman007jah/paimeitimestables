@@ -3,10 +3,31 @@ let gotWrong = 0;
 let streak = 0;
 let bestStreak = 0;
 let turns = 0;
+let seconds = 0;
 
 // get streak data
 bestStreak = localStorage.getItem('bestStreak')
 
+// testing timeing 
+
+let startTime, endTime;
+
+function start() {
+  startTime = performance.now();
+};
+
+function end() {
+  endTime = performance.now();
+  let timeDiff = endTime - startTime; //in ms 
+  // strip the ms 
+  timeDiff /= 1000;
+
+  // get seconds 
+  seconds = Math.round(timeDiff);
+  console.log(seconds + " seconds");
+}
+
+// end testing timing
 
 
 // decs 
@@ -88,6 +109,9 @@ function PMTT() {
   console.log("turns: " + turns);
   console.log("streak: " + streak);
 
+  // test
+  start()
+
   form.addEventListener("submit", testFNC = (e) => {
     e.preventDefault();
     const answer = document.querySelector("#answer-field"); // field refernce by ID
@@ -97,7 +121,7 @@ function PMTT() {
     // validation here
 
     if (stringValue == "") {
-      feedback.textContent = "invalid answer - please submit a number :)"
+      feedback.textContent = "invalid answer - please submit a number .. tysm :)"
       form.removeEventListener("submit", testFNC)
       PMTT();
     } else {
@@ -112,8 +136,22 @@ function PMTT() {
         streak += 1; // score
         turns += 1 // count turns
         newColour = document.getElementById(imageID); // css
-        newColour.classList.add("success"); // css
+        newColour.classList.add("done"); // css
         localStorage.setItem(imageID, 1)
+        end()
+        if (seconds < 7) {
+          console.log("EPIC TIME")
+          let gemID = imageID + "a"
+          newColour = document.getElementById(gemID); // css
+          newColour.classList.add("bigSuccess")
+          console.log(" ------------------ gemID: " + gemID)
+        } else {
+          console.log("nice work")
+          let gemID = imageID + "aa"
+          newColour = document.getElementById(gemID); // css
+          newColour.classList.add("success")
+          console.log(" ------------------ gemID: " + gemID)
+        }
       } else {
         console.log("BAD LUCK + 1 FAIL SCORE")
         gotWrong = gotWrong + 1; // score
