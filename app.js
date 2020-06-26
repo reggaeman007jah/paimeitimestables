@@ -7,6 +7,8 @@ let turns = 0;
 // get streak data
 bestStreak = localStorage.getItem('bestStreak')
 
+
+
 // decs 
 let para = document.querySelector("p"); //
 let form = document.querySelector(".signup-form"); // form reference by class
@@ -15,6 +17,7 @@ let showStreak = document.querySelector("#currentStreak"); // field ref for curr
 let showTurns = document.querySelector("#turnsTaken"); // field ref for current streak
 let showTotalCorrect = document.querySelector("#totalCorrect"); // field ref for current streak
 let showBestStreak = document.querySelector("#bestStreak"); // field ref for best streak
+const feedback = document.querySelector('.feedback');
 
 showBestStreak.innerText = bestStreak
 
@@ -67,42 +70,108 @@ function PMTT() {
     const answer = document.querySelector("#answer-field"); // field refernce by ID
     const stringValue = answer.value; // get string
     const parsedAnswer = Number(stringValue); // now number
-    form.reset(); // reset form field
-    console.log("answer entered is: " + parsedAnswer); // console feedback
-    console.log("answer we were looking for is: " + theAnswer); // console feedback
 
-    if (parsedAnswer === theAnswer) {
-      console.log("WELL DONE + 1 SCORE")
-      gotRight += 1; // score
-      streak += 1; // score
-      turns += 1 // count turns
-      newColour = document.getElementById(imageID); // css
-      newColour.classList.add("success"); // css
-      localStorage.setItem(imageID, 1)
+    // validation here
+
+    if (stringValue == "") {
+      feedback.textContent = "invalid answer - please submit a number :)"
+      form.removeEventListener("submit", testFNC)
+      PMTT();
     } else {
-      console.log("BAD LUCK + 1 FAIL SCORE")
-      gotWrong = gotWrong + 1; // score
-      newColour = document.getElementById(imageID); // css
-      newColour.classList.add("error"); // css
-      streak = 0;
-      turns += 1 // count turns
+
+      form.reset(); // reset form field
+      console.log("answer entered is: " + parsedAnswer); // console feedback
+      console.log("answer we were looking for is: " + theAnswer); // console feedback
+
+      if (parsedAnswer === theAnswer) {
+        console.log("WELL DONE + 1 SCORE")
+        gotRight += 1; // score
+        streak += 1; // score
+        turns += 1 // count turns
+        newColour = document.getElementById(imageID); // css
+        newColour.classList.add("success"); // css
+        localStorage.setItem(imageID, 1)
+      } else {
+        console.log("BAD LUCK + 1 FAIL SCORE")
+        gotWrong = gotWrong + 1; // score
+        newColour = document.getElementById(imageID); // css
+        newColour.classList.add("error"); // css
+        streak = 0;
+        turns += 1 // count turns
+      }
+
+      if (streak > bestStreak) {
+        let copyVar = streak
+        bestStreak = copyVar
+
+      }
+      localStorage.setItem('bestStreak', bestStreak)
+
+      showStreak.innerText = streak
+      showTurns.innerText = turns
+      showTotalCorrect.innerText = gotRight
+      showBestStreak.innerText = bestStreak
+
+
+      form.removeEventListener("submit", testFNC)
+      PMTT();
+
+
+
+
+
+
     }
 
-    if (streak > bestStreak) {
-      let copyVar = streak
-      bestStreak = copyVar
+    // // regex 
+    // const pattern = /^[0-9]{1-3}$/;
+    // if (pattern.test(parsedAnswer)) {
+    //   feedback.textContent = 'nice'
+    // } else {
+    //   // bad
+    //   feedback.textContent = 'hmm, try again'
+    //   // form.removeEventListener("submit", testFNC)
+    //   // PMTT();
+    // }
 
-    }
-    localStorage.setItem('bestStreak', bestStreak)
-
-    showStreak.innerText = streak
-    showTurns.innerText = turns
-    showTotalCorrect.innerText = gotRight
-    showBestStreak.innerText = bestStreak
 
 
-    form.removeEventListener("submit", testFNC)
-    PMTT();
+    // form.reset(); // reset form field
+    // console.log("answer entered is: " + parsedAnswer); // console feedback
+    // console.log("answer we were looking for is: " + theAnswer); // console feedback
+
+    // if (parsedAnswer === theAnswer) {
+    //   console.log("WELL DONE + 1 SCORE")
+    //   gotRight += 1; // score
+    //   streak += 1; // score
+    //   turns += 1 // count turns
+    //   newColour = document.getElementById(imageID); // css
+    //   newColour.classList.add("success"); // css
+    //   localStorage.setItem(imageID, 1)
+    // } else {
+    //   console.log("BAD LUCK + 1 FAIL SCORE")
+    //   gotWrong = gotWrong + 1; // score
+    //   newColour = document.getElementById(imageID); // css
+    //   newColour.classList.add("error"); // css
+    //   streak = 0;
+    //   turns += 1 // count turns
+    // }
+
+    // if (streak > bestStreak) {
+    //   let copyVar = streak
+    //   bestStreak = copyVar
+
+    // }
+    // localStorage.setItem('bestStreak', bestStreak)
+
+    // showStreak.innerText = streak
+    // showTurns.innerText = turns
+    // showTotalCorrect.innerText = gotRight
+    // showBestStreak.innerText = bestStreak
+
+
+    // form.removeEventListener("submit", testFNC)
+    // PMTT();
   })
 
 }
