@@ -13,10 +13,11 @@ bestStreak = localStorage.getItem('bestStreak')
 let para = document.querySelector("p"); //
 let form = document.querySelector(".signup-form"); // form reference by class
 let answer = document.querySelector("#answer-field"); // field refernce by ID
+let checkbox = document.querySelector('input[type="checkbox"]'); // form reference by class
+
 // let showStreak = document.querySelector("#currentStreak"); // field ref for current streak
 let showTurns = document.querySelector("#turnsTaken"); // field ref for current streak
 let showTotalCorrect = document.querySelector("#totalCorrect"); // field ref for current streak
-// let showBestStreak = document.querySelector("#bestStreak"); // field ref for best streak
 const feedback = document.querySelector('.feedback');
 
 // showBestStreak.innerText = bestStreak
@@ -28,6 +29,28 @@ console.log("-------------------------------");
 console.log("");
 console.log("");
 PMTT()
+
+checkbox.addEventListener('change', function () {
+  let showStreak = document.querySelector("#currentStreak"); // field ref for current streak
+  let showBestStreak = document.querySelector("#bestStreak"); // field ref for best streak
+  // showTotalCorrect.innerText = gotRight
+  // showBestStreak.innerText = bestStreak
+
+  if (checkbox.checked) {
+    console.log("checked")
+    showStreak.innerText = streak
+    // showTurns.innerText = turns
+    // showTotalCorrect.innerText = gotRight
+    showBestStreak.innerText = bestStreak
+  } else {
+    console.log("unchecked")
+    showStreak.innerText = ""
+    showBestStreak.innerText = ""
+  }
+})
+
+
+
 
 function checkQuestion(questionID) {
   // check to see if q has already been answered

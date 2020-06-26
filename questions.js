@@ -23,12 +23,19 @@ function FNC_Question() {
   let stringValue = "";
   let para = document.querySelector("p"); //
   let form = document.querySelector(".signup-form"); // form reference by class
+  let togSwitch = document.querySelector(".togSwitch"); // form reference by class
   let answer = document.querySelector("#answer-field"); // field refernce by ID
   testQuestionpart1 = Math.floor(Math.random() * 12 + 1); // first number to multiply
   testQuestionpart2 = Math.floor(Math.random() * 12 + 1); // second number to multiply
   theQuestion = testQuestionpart1 + " x " + testQuestionpart2; // text display of the question
   para.innerText = theQuestion; //question text on-screen
   theAnswer = testQuestionpart1 * testQuestionpart2;
+
+  console.log(
+    "DEBUG TEST - The switch shows:" +
+    togSwitch.value
+  );
+
 
   console.log(
     "DEBUG - The answer we are looking for next, as per current variable 'theAnswer', is " +

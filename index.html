@@ -13,10 +13,13 @@
   <!-- <div class="navbar">
     <nav>
       <div class="nav-wrapper grey darken-3">
-        <a href="#!" class="brand-logo">Logo</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
+        <a href="#!" class="brand-logo left">
+          <img src="assets/bg.svg" width="300" height="auto" />
+
+        </a>
+        <ul class="right hide-on-small-and-down">
+
+
         </ul>
       </div>
     </nav>
@@ -28,14 +31,26 @@
   <div class="row center">
     <h2>PAI MEI TIMES TABLES</hH2>
   </div>
+  <ul class="center">
+    <li>
+      <!-- Switch -->
+      <div class="switch">
+        <label>
+          Hide Streaks
+          <input type="checkbox">
+          <span class="lever"></span>
+          Show Streaks
+        </label>
+      </div>
+    </li>
+  </ul>
+  <br>
   <br>
   <div class="row">
-    <!-- <div class="col s3 center">Current Streak</div> -->
-    <div class="col s3 center"></div>
+    <div id="fieldCurrentStreak" class="col s3 center">Current Streak</div>
     <div class="col s3 center">Turns</div>
     <div class="col s3 center">Total Correct</div>
-    <!-- <div class="col s3 center">Best Streak</div> -->
-    <div class="col s3 center"></div>
+    <div id="fieldBestStreak" class="col s3 center">Best Streak</div>
   </div>
   <div class="row">
     <div id="currentStreak" class="col s3 center"></div>

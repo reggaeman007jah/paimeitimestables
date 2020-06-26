@@ -15,7 +15,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */
-  background-color: rgba(60, 60, 66, 1);
+  background-color: rgb(60, 60, 66);
 }
 
 #answer-field {
