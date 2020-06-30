@@ -32,6 +32,17 @@
   color: white
 }
 
+.medal {
+  color: yellow
+}
+
+.replay {
+  color: orangered
+}
+
+.stats {
+  color: green
+}
 /* html { 
   background: url(assets/bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
