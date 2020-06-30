@@ -32,6 +32,24 @@
   <div class="row center">
     <h2>PAI MEI TIMES TABLES</hH2>
   </div>
+  <div class="center">
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Select Game</a>
+
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href="#!">Freestyle</a></li>
+      <li><a href="#!">Initial Assessment</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li><a href="#!">Practice Level 3</a></li>
+      <li><a href="#!">Practice Level 2</a></li>
+      <li><a href="#!">Practice Level 1</a></li>
+      <li><a href="#!">Practice Retrys</a></li>
+
+      <!-- <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
+    </ul>
+  </div>
   <!-- <div class="fixed-action-btn toolbar">
     <a class="btn-floating btn-large red">
       <i class="large material-icons">games</i>
@@ -43,34 +61,17 @@
       <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
     </ul>
   </div> -->
-  <ul class="center">
-    <li>
-      <!-- Switch -->
-      <div class="switch">
-        <label>
-          Hide Streaks
-          <input type="checkbox">
-          <span class="lever"></span>
-          Show Streaks
-        </label>
-      </div>
-    </li>
-  </ul>
-  <br>
-  <br>
-  <div class="row">
-    <div id="fieldCurrentStreak" class="col s3 center">Current Streak</div>
-    <div class="col s3 center">Turns</div>
-    <div class="col s3 center">Total Correct</div>
-    <div id="fieldBestStreak" class="col s3 center">Best Streak</div>
-  </div>
-  <div class="row">
-    <div id="currentStreak" class="col s3 center"></div>
-    <div id="turnsTaken" class="col s3 center">_</div>
-    <div id="totalCorrect" class="col s3 center">_</div>
-    <div id="bestStreak" class="col s3 center"></div>
-  </div>
 
+  <br>
+  <h5 class="center">Game Type: PRACTICE</h5>
+  <br>
+
+  <div class="center">
+    <a class="btn-floating btn-large waves-effect">
+      <i class="material-icons">play_arrow</i>
+    </a>
+  </div>
+  <br><br><br>
   <p class="center"></p>
   <div class="container">
     <form class="signup-form">
@@ -1019,7 +1020,7 @@
             <div id="12x10aaaa" class="col s1 center">12x10</div>
             <div id="12x11aaaa" class="col s1 center">12x11</div>
             <div id="12x12aaaa" class="col s1 center">12x12</div>
-          </div> -->
+          </div>
         </div>
       </li>
       <li>
@@ -1029,6 +1030,34 @@
         </div>
         <div class="collapsible-body">
           <span>These are your general stats</span>
+          <ul class="center">
+            <br><br>
+            <li>
+              <!-- Switch -->
+              <div class="switch">
+                <label>
+                  Hide Streaks
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  Show Streaks
+                </label>
+              </div>
+            </li>
+          </ul>
+          <br>
+          <br>
+          <div class="row">
+            <div id="fieldCurrentStreak" class="col s3 center">Current Streak</div>
+            <div class="col s3 center">Turns</div>
+            <div class="col s3 center">Total Correct</div>
+            <div id="fieldBestStreak" class="col s3 center">Best Streak</div>
+          </div>
+          <div class="row">
+            <div id="currentStreak" class="col s3 center"></div>
+            <div id="turnsTaken" class="col s3 center">_</div>
+            <div id="totalCorrect" class="col s3 center">_</div>
+            <div id="bestStreak" class="col s3 center"></div>
+          </div>
         </div>
       </li>
     </ul>
@@ -1059,6 +1088,9 @@
     $(document).ready(function () {
       $('.collapsible').collapsible();
     });
+  </script>
+  <script>
+    $('.dropdown-trigger').dropdown();
   </script>
 
 </body>
