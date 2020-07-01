@@ -101,3 +101,5 @@ objective for today - get local storage to record a growing array of answers to 
 
 
 
+learn - flow text
+learn - lorum pixels - random images free

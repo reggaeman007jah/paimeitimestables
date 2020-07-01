@@ -16,11 +16,8 @@
       <div class="nav-wrapper grey darken-3">
         <a href="#!" class="brand-logo left">
           <img src="assets/bg.svg" width="300" height="auto" />
-
         </a>
         <ul class="right hide-on-small-and-down">
-
-
         </ul>
       </div>
     </nav>
@@ -39,12 +36,23 @@
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
       <li><a href="#!">Freestyle</a></li>
-      <li><a href="#!">Initial Assessment</a></li>
+      <li><a href="#!">Speed Streak</a></li>
       <li class="divider" tabindex="-1"></li>
-      <li><a href="#!">Practice Level 3</a></li>
-      <li><a href="#!">Practice Level 2</a></li>
-      <li><a href="#!">Practice Level 1</a></li>
-      <li><a href="#!">Practice Retrys</a></li>
+      <li><a href="#!">Initial 144 Assessment</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li><a href="#!">Practice Level 3 (n)
+          <i class="material-icons center medal">military_tech</i>
+          <i class="material-icons center medal">military_tech</i>
+          <i class="material-icons center medal">military_tech</i>
+        </a></li>
+      <li><a href="#!">Practice Level 2 (n)
+          <i class="material-icons center medal">military_tech</i>
+          <i class="material-icons center medal">military_tech</i>
+        </a></li>
+      <li><a href="#!">Practice Level 1 (n)
+          <i class="material-icons center medal">military_tech</i>
+        </a></li>
+      <li><a href="#!">Practice Retrys (n)<i class="material-icons center replay">replay</i></a></li>
 
       <!-- <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
     <li><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
@@ -63,11 +71,11 @@
   </div> -->
 
   <br>
-  <h5 class="center">Game Type: PRACTICE</h5>
+  <h5 class="center">Game Type: FREESTYLE</h5>
   <br>
 
   <div class="center">
-    <a class="btn-floating btn-large waves-effect">
+    <a id="start_button" class="btn-floating btn-large waves-effect" onclick="myFunction()">
       <i class="material-icons">play_arrow</i>
     </a>
   </div>
@@ -275,7 +283,7 @@
           <i class="material-icons center medal">military_tech</i>
           <i class="material-icons center medal">military_tech</i>
           <i class="material-icons center medal">military_tech</i>
-          Excellent
+          Excellent (n / 144)
         </div>
         <div class="collapsible-body">
           <!-- <span>You can answer these correctly in under 6 seconds! Nice</span> -->
@@ -465,7 +473,7 @@
         <div class="collapsible-header grey darken-3">
           <i class="material-icons center medal">military_tech</i>
           <i class="material-icons center medal">military_tech</i>
-          Good
+          Good (n / 144)
         </div>
         <div class="collapsible-body">
           <!-- <span>You can answer these correctly between 6 and 12 seconds</span> -->
@@ -652,7 +660,7 @@
       <li>
         <div class="collapsible-header grey darken-3">
           <i class="material-icons center medal">military_tech</i>
-          OK
+          OK (n / 144)
         </div>
         <div class="collapsible-body">
           <!-- <span>You can answer these correctly in over 12 seconds</span> -->
@@ -837,7 +845,7 @@
       <li>
         <div class="collapsible-header grey darken-3">
           <i class="material-icons center replay">replay</i>
-          Retry
+          Retry (n / 144)
         </div>
         <div class="collapsible-body">
           <!-- <span>You got these wrong</span>
@@ -1070,6 +1078,11 @@
   <script src="results.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    function myFunction() {
+      console.log("hello world")
+    }
+  </script>
   <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.collapsible');
