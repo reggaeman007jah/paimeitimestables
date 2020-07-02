@@ -8,6 +8,11 @@ let bestStreak = 0;
 let turns = 0;
 let seconds = 0;
 
+let levelThree = 0;
+let levelTwo = 0;
+let levelOne = 0;
+let levelRetry = 0;
+
 let q1x1;
 let q1x2;
 let q1x3;
@@ -197,6 +202,7 @@ bucketAAAA = [];
 // --------------------------------------------------
 
 
+
 // -------------------------------------------------- Get Data
 // get streak data from local storage
 bestStreak = localStorage.getItem('bestStreak')
@@ -232,10 +238,35 @@ let checkbox = document.querySelector('input[type="checkbox"]'); // form referen
 let showTurns = document.querySelector("#turnsTaken"); // field ref for current streak
 let showTotalCorrect = document.querySelector("#totalCorrect"); // field ref for current streak
 const feedback = document.querySelector('.feedback');
+let embedLevelThree = document.querySelector("#embedLevelThree")
+let embedLevelTwo = document.querySelector("#embedLevelTwo")
+let embedLeveOne = document.querySelector("#embedLevelOne")
+let embedLevelRetry = document.querySelector("#embedLevelRetry")
+
+// DDLs
+function TESTFNC() {
+  console.log("TEST FNC")
+}
+
+let DDL_freestyle = document.getElementById("DDL_freestyle").addEventListener('click', TESTFNC);;
 // --------------------------------------------------
+
+
+// start and stop buttons 
+let startButton = document.getElementById("start_button").addEventListener('click', PMTT);
+focusMethod = function getFocus() {
+  document.getElementById("answer-field").focus();
+}
+
 
 // showBestStreak.innerText = bestStreak - do we need this?
 
+
+// test 
+// DDL_freestyle.addEventListener('click', TESTFNC);
+
+
+// end test
 
 // -------------------------------------------------- Console Welcome
 console.log("-------------------------------");
@@ -247,7 +278,7 @@ console.log("");
 
 
 // -------------------------------------------------- Init call
-PMTT() // init call 
+// PMTT() // init call 
 // --------------------------------------------------
 
 
@@ -307,6 +338,9 @@ function checkQuestion(questionID) {
 // -------------------------------------------------- Main FNC
 function PMTT() {
 
+  focusMethod(); // gets cursor to answer line on pressing start button
+  // feedback.textContent = ""
+
   // here I can create totally random quetsions - use this for training 
   // I need to pull down from questions array to avoid duplicates
   console.log("////// ------------------------------- //////");
@@ -334,14 +368,14 @@ function PMTT() {
 
   form.addEventListener("submit", testFNC = (e) => {
     e.preventDefault();
-    const answer = document.querySelector("#answer-field"); // field refernce by ID
+    const answer = document.querySelector("#answer-field"); // field reference by ID
     const stringValue = answer.value; // get string
     const parsedAnswer = Number(stringValue); // now number
 
     // validation here
 
     if (stringValue == "") {
-      feedback.textContent = "invalid answer - please submit a number .. tysm :)"
+      // feedback.textContent = "invalid answer - please submit a number .. tysm :)"
       form.removeEventListener("submit", testFNC)
       PMTT();
     } else {
@@ -352,6 +386,7 @@ function PMTT() {
 
       if (parsedAnswer === theAnswer) {
         console.log("WELL DONE + 1 SCORE")
+        // feedback.textContent = "Well Done :)"
         gotRight += 1; // score
         streak += 1; // score
         turns += 1 // count turns
@@ -361,18 +396,21 @@ function PMTT() {
         end()
         if (seconds < 6) {
           console.log("EPIC TIME")
+          levelThree += 1; // score
           let gemID = imageID + "a"
           newColour = document.getElementById(gemID); // css
           newColour.classList.add("bigSuccess")
           console.log(" ------------------ gemID: " + gemID)
         } else if (seconds < 12) {
           console.log("nice work")
+          levelTwo += 1; // score
           let gemID = imageID + "aa"
           newColour = document.getElementById(gemID); // css
           newColour.classList.add("success")
           console.log(" ------------------ gemID: " + gemID)
         } else {
           console.log("good work - slow and steady")
+          levelOne += 1; // score
           let gemID = imageID + "aaa"
           newColour = document.getElementById(gemID); // css
           newColour.classList.add("success")
@@ -380,6 +418,8 @@ function PMTT() {
         }
       } else {
         console.log("BAD LUCK + 1 FAIL SCORE")
+        // feedback.textContent = "Dang it ;/"
+        levelRetry += 1; // score
         gotWrong = gotWrong + 1; // score
         let gemID = imageID + "aaaa"
         newColour = document.getElementById(gemID); // css
@@ -399,6 +439,10 @@ function PMTT() {
       // showStreak.innerText = streak
       showTurns.innerText = turns
       showTotalCorrect.innerText = gotRight
+      embedLevelThree.innerText = levelThree
+      embedLevelTwo.innerText = levelTwo
+      embedLevelOne.innerText = levelOne
+      embedLevelRetry.innerText = levelRetry
       // showBestStreak.innerText = bestStreak
 
 
