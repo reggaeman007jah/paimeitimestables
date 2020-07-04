@@ -6,6 +6,7 @@ q2x5 = [
     third: '05:32',
     fourth: 'wrong',
     fifth: '07:44'
+    // answerTimes: [00: 00, 00: 01, 00: 02, 00: 10]
   }
 ]
 
