@@ -27,9 +27,13 @@ add stop button to end curretn game
 we need to pull game states on page load
 has there been a 144 assessment? This needs to be done at least once all the way through 
 
-
 */
 // game states --------------------------------------
+let gameType144 = false; // init dec 
+
+// now check if exists in local storage 
+
+
 
 // I declare these arrays here, to enable local storage to pull in anything it has in storage
 
@@ -54,11 +58,11 @@ let dataAA = localStorage.getItem('leBucketAA'); // pulls in what is kept in sto
 let dataAAA = localStorage.getItem('leBucketAAA'); // pulls in what is kept in storage
 let dataV = localStorage.getItem('leBucketV'); // pulls in what is kept in storage
 let dataR = localStorage.getItem('leBucketR'); // pulls in what is kept in storage
-console.log("init testData bucketA: ", dataA) // shows what was laoded from storage on init
-console.log("init testData bucketAA: ", dataAA) // shows what was laoded from storage on init
-console.log("init testData bucketAAA: ", dataAAA) // shows what was laoded from storage on init
-console.log("init testData bucketV: ", dataV) // shows what was laoded from storage on init
-console.log("init testData bucketR: ", dataR) // shows what was laoded from storage on init
+console.log("init testData bucketA: ", dataA) // shows what was loaded from storage on init
+console.log("init testData bucketAA: ", dataAA) // shows what was loaded from storage on init
+console.log("init testData bucketAAA: ", dataAAA) // shows what was loaded from storage on init
+console.log("init testData bucketV: ", dataV) // shows what was loaded from storage on init
+console.log("init testData bucketR: ", dataR) // shows what was loaded from storage on init
 bucketA.push(dataA) // this pushes loaded content into the A bucket
 bucketAA.push(dataAA) // this pushes loaded content into the A bucket
 bucketAAA.push(dataAAA) // this pushes loaded content into the A bucket
@@ -67,7 +71,31 @@ bucketR.push(dataR) // this pushes loaded content into the A bucket
 // console.log("Bucket A: ", bucketA)
 // end
 
-// here should we 
+// here i think we need to forEach all of the imported data, to popluate the AAAs
+// let importID = imageID + "a" // gemID is a way to show success in the grid
+// newColour = document.getElementById(importID); // css
+// newColour.classList.add("bigSuccess") // css 
+
+console.log(bucketA)
+const convertedData = JSON.parse(bucketA)
+console.log("test 1 ---", convertedData)
+
+// var array = [0, 1, null, 2, "", 3, undefined, 3,,,,,, 4,, 4,, 5,, 6,,,,];
+
+
+
+// let testArray = JSON.parse("[" + bucketA + "]");
+// console.log("testing", testArray)
+// dataA.forEach(function (item) {
+//   console.log(item)
+
+// })
+
+convertedData.forEach(function (item) {
+  item = item + "a"
+  console.log(item)
+})
+
 
 
 // here we have init decs for stats 
@@ -77,6 +105,13 @@ let streak = 0;
 let bestStreak = 0;
 let turns = 0;
 let seconds = 0;
+
+let sessionGotRight = 0;
+let sessionGotWrong = 0;
+let sessionTurns = 0;
+let totalGotRight = 0;
+let totalgotWrong = 0;
+let totalTurns = 0;
 
 // this is the init decs for numbers of answers in each bucket
 let vault = 0; // these have been answered correctly 5 times in a row in under 6 seconds
@@ -430,6 +465,13 @@ function checkQuestion(questionID) {
 // -------------------------------------------------- Main FNC
 function PMTT() {
 
+  if (questions144.length == 0) {
+    alert("well done - you win the game")
+
+
+    return
+  }
+
   focusMethod(); // gets cursor to answer line on pressing start button
   // feedback.textContent = ""
 
@@ -449,8 +491,9 @@ function PMTT() {
 
   // next line shows which item was selected 
   console.log("selected from 144 array:", item)
-  let removed = questions144.splice(arraySelect, 1)
-  console.log("spliced out: ", removed)
+  // let removed = questions144.splice(arraySelect, 1)
+  // console.log("spliced out: ", removed)
+  // testing removing above two lines and only slicing them out if get under 6 seconds
   console.log(questions144)
 
   // now to extract key numbers from spliced question 
@@ -610,17 +653,19 @@ function PMTT() {
         localStorage.setItem(imageID, 1)
         end()
         if (seconds < 6) {
-          console.log("EPIC TIME")
+          console.log("EPIC TIME") // console feedback
           levelThree += 1; // score
           let gemID = imageID + "a" // gemID is a way to show success in the grid
           newColour = document.getElementById(gemID); // css
           newColour.classList.add("bigSuccess") // css 
           console.log(" ------------------ gemID: " + gemID) // console feedback
           bucketA.push(imageID) // this pushes the question to the A bucket
-          localStorage.setItem('leBucketA', bucketA)
-          console.log("Bucket A: ", bucketA)
-          let testData2 = localStorage.getItem('leBucketA'); // pulls in what is kept in storage
-          console.log("init testData bucketA: ", testData2)
+          localStorage.setItem('leBucketA', JSON.stringify(bucketA)) // this sets local data 
+          console.log("Bucket A: ", bucketA) // console feedback
+          let testData2 = localStorage.getItem('leBucketA'); // pulls in what is kept in storage - problem == ALL ONE STRING HERE
+          console.log("init testData bucketA: ", testData2) // console feedback
+          let removed = questions144.splice(arraySelect, 1)
+          console.log("spliced out on under 6 seconds: ", removed)
         } else if (seconds < 12) {
           console.log("nice work")
           levelTwo += 1; // score
@@ -628,7 +673,7 @@ function PMTT() {
           newColour = document.getElementById(gemID); // css
           newColour.classList.add("success")
           console.log(" ------------------ gemID: " + gemID)
-          bucketAA.push(imageID) // this pushes the question to the A bucket
+          bucketAA.push(imageID) // this pushes the question to the AA bucket
           console.log("Bucket AA: ", bucketAA)
         } else {
           console.log("good work - slow and steady")
@@ -637,7 +682,7 @@ function PMTT() {
           newColour = document.getElementById(gemID); // css
           newColour.classList.add("success")
           console.log(" ------------------ gemID: " + gemID)
-          bucketAAA.push(imageID) // this pushes the question to the A bucket
+          bucketAAA.push(imageID) // this pushes the question to the AAA bucket
           console.log("Bucket AAA: ", bucketAAA)
         }
       } else {
@@ -652,7 +697,7 @@ function PMTT() {
         newColour2.classList.add("done"); // css
         streak = 0;
         turns += 1 // count turns
-        bucketR.push(imageID) // this pushes the question to the A bucket
+        bucketR.push(imageID) // this pushes the question to the R bucket
         console.log("Bucket R: ", bucketR)
       }
 

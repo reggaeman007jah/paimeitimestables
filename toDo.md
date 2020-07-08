@@ -103,3 +103,22 @@ objective for today - get local storage to record a growing array of answers to 
 
 learn - flow text
 learn - lorum pixels - random images free
+
+----
+
+from scratch, you need to complete 144 questions 
+when done you get an award - done144
+This ^^ is game type 1 
+before complete, gameType144 = false 
+when all done, in one session, gameType144 = true 
+so when start, check is gameType144 == true? 
+if no, do 144, if yes, unlock DDL 
+in order to apply flag, you must be able to track when 144 is over 
+so next task - count questions that have had answers 
+note - pressing enter counts as a question - ie removes answer from array !
+
+---
+
+ok, so i now am able to only splice out a question from the main 144 array, only if answered in under 6 seconds.
+everything else essentially gets recycled
+there must be a check made
