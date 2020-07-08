@@ -9,6 +9,28 @@ console.log("");
 console.log("");
 // --------------------------------------------------
 
+// to do --------------------------------------------
+/*
+add total turns, total right, total wrong in stats
+fix DDL
+have a counter to show how many are left when doing 144 assessment
+end game state for 144 assessment with modal showing stats and message
+check isComplete144? - if false, run 144 asssessment 
+no save state yet, this has to be done all the way through 
+add stop button to end curretn game
+*/
+// to do --------------------------------------------
+
+
+// game states --------------------------------------
+/*
+we need to pull game states on page load
+has there been a 144 assessment? This needs to be done at least once all the way through 
+
+
+*/
+// game states --------------------------------------
+
 // I declare these arrays here, to enable local storage to pull in anything it has in storage
 
 // bucket V - locked - proven knowledge goes in here
