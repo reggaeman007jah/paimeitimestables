@@ -3,16 +3,12 @@ console.log("-------------------------------");
 console.log("WELCOME TO PAI MEI TIMES TABLES");
 console.log("-------------------------------");
 console.log("");
-// let myTestArray = [1, 2, 3, 4, 5]
-// let myTestSelect = myTestArray[2]
-// console.log(myTestSelect)
 console.log("");
-// --------------------------------------------------
 
 // to do --------------------------------------------
 /*
 add total turns, total right, total wrong in stats
-fix DDL
+fix DDL - edit - do we now want multi games? or just one game?
 have a counter to show how many are left when doing 144 assessment
 end game state for 144 assessment with modal showing stats and message
 check isComplete144? - if false, run 144 asssessment 
