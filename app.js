@@ -72,9 +72,9 @@ bucketR.push(dataR) // this pushes loaded content into the A bucket
 // newColour = document.getElementById(importID); // css
 // newColour.classList.add("bigSuccess") // css 
 
-console.log(bucketA)
-const convertedData = JSON.parse(bucketA)
-console.log("test 1 ---", convertedData)
+// console.log(bucketA)
+// const convertedData = JSON.parse(bucketA)
+// console.log("test 1 ---", convertedData)
 
 // var array = [0, 1, null, 2, "", 3, undefined, 3,,,,,, 4,, 4,, 5,, 6,,,,];
 

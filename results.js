@@ -12,4 +12,11 @@ q2x5 = [
 
 console.log(JSON.stringify(q2x5))
 
-// need to keep question history here 
+under6seconds = [
+  {
+    "q1x1": "q1x1a",
+    "q1x2": "q1x2a",
+    "q1x3": "q1x3a"
+  }
+]
+
