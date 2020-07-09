@@ -87,10 +87,10 @@ bucketR.push(dataR) // this pushes loaded content into the A bucket
 
 // })
 
-convertedData.forEach(function (item) {
-  item = item + "a"
-  console.log(item)
-})
+// convertedData.forEach(function (item) {
+//   item = item + "a"
+//   console.log(item)
+// })
 
 
 
